@@ -21,6 +21,11 @@ class ActorInventory<TActor extends ActorPF2e> extends DelegatedCollection<Physi
         this.bulk = new InventoryBulk(this.actor);
     }
 
+    /** Object with current inventory items */
+    get byId(): { readonly [key: string]: PhysicalItemPF2e<TActor> } {
+        return Object.fromEntries(this.entries());
+    }
+
     get coins(): CoinsPF2e {
         return this.filter((i) => i.isOfType("treasure") && i.isCoinage)
             .map((item) => item.assetValue)

@@ -68,4 +68,8 @@ export class DelegatedCollection<V> {
     clear(): void {
         this.#data.clear();
     }
+
+    entries(): ReturnType<Collection<V>["entries"]> {
+        return this.#data.entries();
+    }
 }
